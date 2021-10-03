@@ -1,0 +1,27 @@
+.game {
+  display: flex;
+}
+
+.game-info {
+  margin-left: 1rem;
+}
+
+.game-setting {
+  border: 0.1rem solid #c0c0c0;
+  padding: 0.5rem;
+}
+
+.game-setting input {
+  width: 3rem;
+}
+
+.game-board {
+  margin-top: 2rem;
+  margin-left: 1rem;
+}
+
+.game-alert {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 1rem;
+}
