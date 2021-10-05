@@ -24,7 +24,7 @@ export default function Game() {
 
   const settingSizeHandler = () => {
     setIsPlaying(false);
-    setSquares(Array(width * height).fill(null));
+    setSquares([]);
   }
 
   const calcWinner1 = (squares, width, height) => {
@@ -34,7 +34,7 @@ export default function Game() {
       if (squares[i] && squares[i] === squares[i + 1] && squares[i] === squares[i + 2] && squares[i] === squares[i + 3] && squares[i] === squares[i + 4]) {
         return [i, i + 1, i + 2, i + 3, i + 4];
       } else {
-        if (i === width - 5 * j) {
+        if (Number(width) * j - i === 5) {
           i = width * j;
           j++;
         }
@@ -77,7 +77,7 @@ export default function Game() {
         return [i, i + Number(width) * 1 + 1, i + Number(width) * 2 + 2, i + Number(width) * 3 + 3, i + Number(width) * 4 + 4]
       }
       else {
-        if (i === width - 5 * j) {
+        if (Number(width) * j - i === 5) {
           i = width * j;
           j++;
         }
@@ -115,7 +115,7 @@ export default function Game() {
   }
 
   const calcDraw = (squares, winLine1, winLine2, winLine3, winLine4) => {
-    if (!squares.includes(null) && !winLine1 && !winLine2 && !winLine3 && !winLine4) {
+    if (!squares.includes(null) && squares.length !== 0 && !winLine1 && !winLine2 && !winLine3 && !winLine4) {
       return true;
     }
     else return false;
@@ -153,9 +153,8 @@ export default function Game() {
 
   return (
     <div className="game">
-
       <div className="game-info">
-        <h1>Tic tac toe</h1>
+        <h1>Caro</h1>
         <form className="game-setting" onSubmit={submitSizeBoard}>
           <h3>Setting</h3>
           <div>
@@ -163,6 +162,7 @@ export default function Game() {
             <input
               id="width"
               type="number"
+              min={5}
               value={width}
               onChange={(e) => { setWidth(e.target.value) }}
               disabled={isPlaying}
@@ -173,21 +173,28 @@ export default function Game() {
             <input
               id="height"
               type="number"
+              min={5}
               value={height}
               onChange={e => { setHeight(e.target.value) }}
               disabled={isPlaying}
             ></input>
           </div>
-          <button
-            type="submit"
-            disabled={isPlaying}
-          > OK</button>
-          <button
-            disabled={!isPlaying}
-            onClick={settingSizeHandler}
-          >Setting</button>
+          <div className="setting-actions">
+            <button
+              type="submit"
+              disabled={isPlaying}
+            > OK</button>
+            <button
+              disabled={!isPlaying}
+              onClick={settingSizeHandler}
+            >Setting</button>
+          </div>
+
         </form>
         <div className="game-alert">
+          <div className="game-alert-next">
+            Next is {xIsNext ? 'X' : 'O'}
+          </div>
           {winLine1 && <h2>{squares[winLine1[0]]} won</h2>}
           {winLine2 && <h2>{squares[winLine2[0]]} won</h2>}
           {winLine3 && <h2>{squares[winLine3[0]]} won</h2>}

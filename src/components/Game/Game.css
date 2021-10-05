@@ -6,6 +6,8 @@
   margin-left: 1rem;
 }
 
+
+
 .game-setting {
   border: 0.1rem solid #c0c0c0;
   padding: 0.5rem;
@@ -15,6 +17,17 @@
   width: 3rem;
 }
 
+.game-setting h3 {
+  margin-top: 0.2rem;
+}
+
+
+.setting-actions {
+  margin-top: 0.2rem;
+  display: flex;
+  justify-content: space-around;
+}
+
 .game-board {
   margin-top: 2rem;
   margin-left: 1rem;
@@ -22,6 +35,14 @@
 
 .game-alert {
   text-align: center;
-  padding: 1rem;
-  margin-top: 1rem;
+  padding: 0.7rem;
+}
+
+.game-alert h2 {
+  margin: 0.7rem 0;
+}
+
+.game-alert-next {
+  font-weight: bold;
+  color: #063eb8;
 }
